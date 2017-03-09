@@ -1,1 +1,5 @@
+*.swp
+*.swo
 .stack-work/
+dist/
+node_modules/

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <% if (htmlWebpackPlugin.options.basename) { %>
+    <base href="<%= htmlWebpackPlugin.options.basename %>">
+    <% } %>
+    <meta charSet="utf-8" />
+    <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Functional Parser</title>
+  </head>
+
+  <body>
+    <% if (htmlWebpackPlugin.options.html) { %>
+    <%= htmlWebpackPlugin.options.html %>
+    <% } %>
+
+    <% if (htmlWebpackPlugin.options.script) { %>
+    <script src="<%= htmlWebpackPlugin.options.script %>" type="application/javascript"></script>
+    <% } %>
+  </body>
+</html>
