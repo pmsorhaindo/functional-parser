@@ -4,6 +4,7 @@
 // A functor of type T holds values of type T and provides fmap which is a function of (T -> U)
 
 // An array is a functor that applies the function to all elements of the array
+// An array is a holder for zero or more values of type T.
 
 class ArrayFunctor extends Array {
 
@@ -14,6 +15,7 @@ class ArrayFunctor extends Array {
 }
 
 // A maybe is a functor that applies the function to the held value if it is present
+// A maybe is a holder for zero or one value of type T.
 
 class Maybe {
 
@@ -38,3 +40,14 @@ class MaybeFunctor extends Maybe {
 
 }
 
+// An applicative of type T holds values of type T and provides apply which takes another applicative holding a function of type (T -> U)
+// In this I will assume that the two applicatives are of the same type (i.e. ArrayApplicative applied to an ArrayApplicative, etc)
+// If I can generalize this then that would be good.
+
+class ArrayApplicative extends ArrayFunctor {
+
+    apply (f) {
+        return f.fmap(fun => this.map(fun));
+    }
+
+}
