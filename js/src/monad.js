@@ -8,9 +8,9 @@
 
 class ArrayFunctor extends Array {
 
-    fmap (f) {
-        return this.map(f);
-    }
+  fmap (f) {
+    return this.map(f);
+  }
 
 }
 
@@ -19,24 +19,24 @@ class ArrayFunctor extends Array {
 
 class Maybe {
 
-    constructor(value) {
-        this.value = value;
-    }
+  constructor(value) {
+    this.value = value;
+  }
 
-    isPresent() {
-        return this.value !== undefined && this.value !== null;
-    }
+  isPresent() {
+    return this.value !== undefined && this.value !== null;
+  }
 
 }
 
 class MaybeFunctor extends Maybe {
 
-    fmap (f) {
-        if (this.isPresent()) {
-            return new Maybe(f(this.value));
-        }
-        return this;
+  fmap (f) {
+    if (this.isPresent()) {
+      return new Maybe(f(this.value));
     }
+    return this;
+  }
 
 }
 
@@ -46,8 +46,8 @@ class MaybeFunctor extends Maybe {
 
 class ArrayApplicative extends ArrayFunctor {
 
-    apply (f) {
-        return f.fmap(fun => this.map(fun));
-    }
+  apply (f) {
+    return f.fmap(fun => this.map(fun));
+  }
 
 }
