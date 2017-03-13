@@ -53,3 +53,11 @@ class ArrayApplicative extends ArrayFunctor {
   }
 
 }
+
+class MaybeApplicative extends MaybeFunctor {
+
+  apply (f) {
+    return f.fmap(fun => this.fmap(fun));
+  }
+
+}
