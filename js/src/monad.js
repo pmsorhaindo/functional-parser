@@ -24,7 +24,8 @@ class Maybe {
   }
 
   isPresent() {
-    return this.value !== undefined && this.value !== null;
+    return this.value !== undefined
+        && this.value !== null;
   }
 
 }
@@ -47,7 +48,8 @@ class MaybeFunctor extends Maybe {
 class ArrayApplicative extends ArrayFunctor {
 
   apply (f) {
-    return f.fmap(fun => this.map(fun));
+    return f.fmap(fun => this.map(fun))
+            .reduce((a, v) => a.concat(v));
   }
 
 }
