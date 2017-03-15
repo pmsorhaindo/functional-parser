@@ -129,3 +129,5 @@ class MaybeMonad extends MaybeApplicative {
 // mm = new MaybeMonad(1)
 // mm.bind(a => new MaybeMonad(a * 3))
 // ➜ { 3 }
+
+export { ArrayFunctor, ArrayApplicative, ArrayMonad, Maybe, MaybeFunctor, MaybeApplicative, MaybeMonad };
