@@ -58,6 +58,10 @@ class MaybeFunctor extends Maybe {
 
 class ArrayApplicative extends ArrayFunctor {
 
+  pure (v) {
+    return new this.constructor(v);
+  }
+
   apply (f) {
     return f.fmap(fun => this.map(fun))
             .reduce((a, v) => a.concat(v));
@@ -71,6 +75,10 @@ class ArrayApplicative extends ArrayFunctor {
 // ➜ [ 2, 3, 4, 2, 4, 6 ]
 
 class MaybeApplicative extends MaybeFunctor {
+
+  pure (v) {
+    return new this.constructor(v);
+  }
 
   apply (f) {
     return f.fmap(fun => this.fmap(fun))
@@ -90,6 +98,10 @@ class MaybeApplicative extends MaybeFunctor {
 
 class ArrayMonad extends ArrayApplicative {
 
+  return (v) {
+    return new this.constructor(v);
+  }
+
   bind (f) {
     return this.fmap(f)
                .reduce((a, v) => a.concat(v));
@@ -102,6 +114,10 @@ class ArrayMonad extends ArrayApplicative {
 // ➜ [ 1, 2, 2, 4, 3, 6 ]
 
 class MaybeMonad extends MaybeApplicative {
+
+  return (v) {
+    return new this.constructor(v);
+  }
 
   bind (f) {
     return this.fmap(f)
