@@ -59,7 +59,7 @@ class MaybeFunctor extends Maybe {
 class ArrayApplicative extends ArrayFunctor {
 
   pure (v) {
-    return new this.constructor(v);
+    return new ArrayApplicative(v);
   }
 
   apply (f) {
