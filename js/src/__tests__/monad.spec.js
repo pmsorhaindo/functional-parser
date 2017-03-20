@@ -1,38 +1,24 @@
-//import { ArrayFunctor, ArrayApplicative, ArrayMonad, Maybe, MaybeFunctor, MaybeApplicative, MaybeMonad } from '../monad';
-
-class ArrayFunctor extends Array {
-
-  fmap (f) {
-    return this.map(f);
-  }
-
-}
-
-
-class ArrayApplicative extends ArrayFunctor {
-
-  pure (v) {
-    return new ArrayFunctor(v);
-  }
-
-  apply (f) {
-    return f.fmap(fun => this.map(fun))
-      .reduce((a, v) => a.concat(v), new ArrayApplicative());
-  }
-
-}
+//jest.unmock('ArrayFunctor');
+//jest.unmock('ArrayApplicative');
+//jest.unmock('ArrayMonad');
+import { ArrayFunctor, ArrayApplicative, ArrayMonad, Maybe, MaybeFunctor, MaybeApplicative, MaybeMonad } from '../monad';
 
 describe('applicative laws', () => {
   const pure = value => new ArrayApplicative(value);
   const id = value => value;
+  const v = "value";
 
   // pure id <*> v = v
   it('should adhere to the identity law', () => {
-    const v = "value";
 
     //this works in jsbin.
     // no config is needed for babel-jest
     // ...this is weird.
+    let x = new ArrayApplicative(v);
+    console.log('1', x.constructor.name);
+    console.log('2', pure(id).fmap([]));
+    console.log(pure(v),pure(v).constructor.name);
+
     expect(pure(v).apply(pure(id))).toEqual(pure(v));
   });
 });

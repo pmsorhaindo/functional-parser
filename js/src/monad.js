@@ -6,7 +6,11 @@
 // An array is a functor that applies the function to all elements of the array
 // An array is a holder for zero or more values of type T.
 
-class ArrayFunctor extends Array {
+class Blah {
+  map = (x) => [x]
+}
+
+class ArrayFunctor extends Blah {
 
   fmap (f) {
     return this.map(f);
